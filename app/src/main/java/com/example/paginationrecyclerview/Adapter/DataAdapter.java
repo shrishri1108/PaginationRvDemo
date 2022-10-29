@@ -1,17 +1,20 @@
 package com.example.paginationrecyclerview.Adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.paginationrecyclerview.Model.DataResponseModel;
 import com.example.paginationrecyclerview.R;
 
@@ -38,20 +41,21 @@ public class DataAdapter  extends RecyclerView.Adapter<DataAdapter.dataViewHolde
         DataResponseModel dataResponseModel= mylists.get(position);
         holder.product_name.setText(dataResponseModel.getName());
 
-        Glide.with(holder.product_image.getContext())
+        Glide.with(activity)
                 .load(dataResponseModel.getImage())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.product_image);
 
         holder.btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(activity, " Buy Later", Toast.LENGTH_SHORT).show();
             }
         });
         holder.btn_save_later.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(activity, " Successfully saved ", Toast.LENGTH_SHORT).show();
             }
         });
     }

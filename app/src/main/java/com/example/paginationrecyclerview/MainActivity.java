@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(MainActivity.this, " Response is Successful ! .  ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "  Next Page data Successfully Collected    ", Toast.LENGTH_SHORT).show();
                     mainBinding.progressBar.setVisibility(View.GONE);
                     try {
                         JSONArray jsonArray = new JSONArray(response.body());
